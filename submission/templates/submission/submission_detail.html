@@ -1,0 +1,50 @@
+{% extends 'submission/base.html' %}
+{% load submission_tags %}
+
+{% block title %}Submission Detail{% endblock %}
+
+{% block content %}
+    <div class="container mt-4">
+        <h2 class="mb-3">Submission Detail: {{ submission.title }}</h2>
+        <p><strong>Date Submitted:</strong> {{ submission.submission_time }}</p>
+        <p><strong>Word Count:</strong> {{ submission.word_count }}</p>
+
+        <!-- Collapsible text field -->
+        <div class="accordion" id="accordionText">
+            <div class="accordion-item">
+                <h2 class="accordion-header" id="headingText">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseText" aria-expanded="false" aria-controls="collapseText">
+                        Submitted Text
+                    </button>
+                </h2>
+                <div id="collapseText" class="accordion-collapse collapse" aria-labelledby="headingText" data-bs-parent="#accordionText">
+                    <div class="accordion-body">
+                        {{ submission.submission_text }}
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Readability scores with modals for more information -->
+        <h3 class="mt-4">Readability Scores</h3>
+        {% for test in readability_tests %}
+            <p><strong><a href="#" data-bs-toggle="modal" data-bs-target="#modal{{ test.id }}">{{ test.display_name }}</a>:</strong> {{ submission|get_test_score:test.test_name }}</p>
+
+            <!-- Modal for readability test information -->
+            <div class="modal fade" id="modal{{ test.id }}" tabindex="-1" aria-labelledby="modalLabel{{ test.id }}" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="modalLabel{{ test.id }}">{{ test.display_name }}</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            {{ test.description }}
+                            <br><a href="{{ test.more_info_link }}" target="_blank">Learn More</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+{% endblock %}
