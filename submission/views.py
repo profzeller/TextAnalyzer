@@ -4,15 +4,13 @@ from .models import TextSubmission, ReadabilityTestInfo
 import textstat
 from django.db.models import Avg, Count
 from django.shortcuts import get_object_or_404
+from .tasks import fetch_openai_scores  # Assuming you have this task set up for Celery
 
 
 def submission_detail(request, pk):
     submission = get_object_or_404(TextSubmission, pk=pk)
-    readability_tests = ReadabilityTestInfo.objects.all()
-
     return render(request, 'submission/submission_detail.html', {
         'submission': submission,
-        'readability_tests': readability_tests
     })
 
 
@@ -28,18 +26,27 @@ def submit_text(request):
             submission = TextSubmission(title=title, submission_text=submission_text, word_count=word_count)
 
             # Calculate readability scores
-            submission.flesch_reading_ease = textstat.flesch_reading_ease(submission_text)
-            submission.smog_index = textstat.smog_index(submission_text)
-            submission.flesch_kincaid_grade = textstat.flesch_kincaid_grade(submission_text)
-            submission.coleman_liau_index = textstat.coleman_liau_index(submission_text)
-            submission.automated_readability_index = textstat.automated_readability_index(submission_text)
-            submission.dale_chall_readability_score = textstat.dale_chall_readability_score(submission_text)
-            submission.difficult_words = textstat.difficult_words(submission_text)
-            submission.linsear_write_formula = textstat.linsear_write_formula(submission_text)
-            submission.gunning_fog = textstat.gunning_fog(submission_text)
-            submission.text_standard = textstat.text_standard(submission_text, float_output=False)
+            submission.readability_scores['smog_index'] = [{
+                'score': textstat.smog_index(submission_text),
+                'source': 'textstat'
+            }]
+            submission.readability_scores['flesch_kincaid_grade'] = [{
+                'score': textstat.flesch_kincaid_grade(submission_text),
+                'source': 'textstat'
+            }]
+            submission.readability_scores['coleman_liau_index'] = [{
+                'score': textstat.coleman_liau_index(submission_text),
+                'source': 'textstat'
+            }]
+            submission.readability_scores['gunning_fog'] = [{
+                'score': textstat.gunning_fog(submission_text),
+                'source': 'textstat'
+            }]
 
             submission.save()
+
+            # Asynchronously fetch scores from OpenAI (Celery task)
+            fetch_openai_scores.delay(submission.id, submission.submission_text)
 
             # Redirect or show success message
             # ...

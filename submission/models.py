@@ -9,20 +9,21 @@ class TextSubmission(models.Model):
     word_count = models.IntegerField(default=0)
     submission_time = models.DateTimeField(default=timezone.now)
 
+    readability_scores = JSONField(default=dict)
 
 
     # Fields for readability scores
-    flesch_reading_ease = models.FloatField(null=True, blank=True)
-    flesch_reading_ease = models.FloatField(null=True, blank=True)
-    smog_index = models.FloatField(null=True, blank=True)
-    flesch_kincaid_grade = models.FloatField(null=True, blank=True)
-    coleman_liau_index = models.FloatField(null=True, blank=True)
-    automated_readability_index = models.FloatField(null=True, blank=True)
-    dale_chall_readability_score = models.FloatField(null=True, blank=True)
-    difficult_words = models.IntegerField(null=True, blank=True)
-    linsear_write_formula = models.FloatField(null=True, blank=True)
-    gunning_fog = models.FloatField(null=True, blank=True)
-    text_standard = models.CharField(max_length=100, null=True, blank=True)
+    # flesch_reading_ease = models.FloatField(null=True, blank=True)
+    # flesch_reading_ease = models.FloatField(null=True, blank=True)
+    # smog_index = models.FloatField(null=True, blank=True)
+    # flesch_kincaid_grade = models.FloatField(null=True, blank=True)
+    # coleman_liau_index = models.FloatField(null=True, blank=True)
+    # automated_readability_index = models.FloatField(null=True, blank=True)
+    # dale_chall_readability_score = models.FloatField(null=True, blank=True)
+    # difficult_words = models.IntegerField(null=True, blank=True)
+    # linsear_write_formula = models.FloatField(null=True, blank=True)
+    # gunning_fog = models.FloatField(null=True, blank=True)
+    # text_standard = models.CharField(max_length=100, null=True, blank=True)
 
 
 class ReadabilityTestInfo(models.Model):

@@ -3,16 +3,6 @@
         "model": "submission.readabilitytestinfo",
         "pk": 1,
         "fields": {
-            "test_name": "flesch_reading_ease",
-            "display_name": "Flesch Reading Ease",
-            "description": "Evaluates text based on sentence length and word length. Higher scores indicate material that is easier to read; lower numbers mark passages that are more difficult to read.",
-            "more_info_link": "https://en.wikipedia.org/wiki/Flesch%E2%80%93Kincaid_readability_tests#Flesch_reading_ease"
-        }
-    },
-    {
-        "model": "submission.readabilitytestinfo",
-        "pk": 2,
-        "fields": {
             "test_name": "smog_index",
             "display_name": "SMOG Index",
             "description": "Estimates the years of education needed to understand a piece of writing. Higher grade levels mean more complex writing.",
@@ -21,7 +11,7 @@
     },
     {
         "model": "submission.readabilitytestinfo",
-        "pk": 3,
+        "pk": 2,
         "fields": {
             "test_name": "flesch_kincaid_grade",
             "display_name": "Flesch-Kincaid Grade Level",
@@ -31,7 +21,7 @@
     },
     {
         "model": "submission.readabilitytestinfo",
-        "pk": 4,
+        "pk": 3,
         "fields": {
             "test_name": "coleman_liau_index",
             "display_name": "Coleman-Liau Index",
@@ -41,62 +31,12 @@
     },
     {
         "model": "submission.readabilitytestinfo",
-        "pk": 5,
-        "fields": {
-            "test_name": "automated_readability_index",
-            "display_name": "Automated Readability Index",
-            "description": "Evaluates the understandability of a text, specifically its ease of reading. It outputs a number that approximates the grade level needed to comprehend the text.",
-            "more_info_link": "https://en.wikipedia.org/wiki/Automated_readability_index"
-        }
-    },
-    {
-        "model": "submission.readabilitytestinfo",
-        "pk": 6,
-        "fields": {
-            "test_name": "dale_chall_readability_score",
-            "display_name": "Dale-Chall Readability Score",
-            "description": "Assesses the comprehensibility of a text based on sentence complexity and word familiarity. It uses a list of words that are familiar to students in grades 4 and below.",
-            "more_info_link": "https://en.wikipedia.org/wiki/Dale%E2%80%93Chall_readability_formula"
-        }
-    },
-    {
-        "model": "submission.readabilitytestinfo",
-        "pk": 7,
-        "fields": {
-            "test_name": "difficult_words",
-            "display_name": "Difficult Words",
-            "description": "Counts the number of words not on a list of 3000 commonly used words, giving an indication of the text's complexity in terms of vocabulary.",
-            "more_info_link": "https://en.wikipedia.org/wiki/Dale%E2%80%93Chall_readability_formula#Word_list"
-        }
-    },
-    {
-        "model": "submission.readabilitytestinfo",
-        "pk": 8,
-        "fields": {
-            "test_name": "linsear_write_formula",
-            "display_name": "Linsear Write Formula",
-            "description": "A readability metric for English text, particularly for technical documents. It predicts the grade level required to understand a text.",
-            "more_info_link": "https://en.wikipedia.org/wiki/Linsear_Write"
-        }
-    },
-    {
-        "model": "submission.readabilitytestinfo",
-        "pk": 9,
+        "pk": 4,
         "fields": {
             "test_name": "gunning_fog",
             "display_name": "Gunning Fog Index",
             "description": "Estimates the years of formal education a person needs to understand the text on the first reading. Higher values indicate material that is harder to read.",
             "more_info_link": "https://en.wikipedia.org/wiki/Gunning_fog_index"
-        }
-    },
-    {
-        "model": "submission.readabilitytestinfo",
-        "pk": 10,
-        "fields": {
-            "test_name": "text_standard",
-            "display_name": "Text Standard",
-            "description": "A composite score derived from several readability formulas, giving a general idea of the grade level needed to understand the text.",
-            "more_info_link": "https://en.wikipedia.org/wiki/Readability"
         }
     }
 ]
