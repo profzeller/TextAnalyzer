@@ -22,7 +22,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = 'django-insecure-d_jh1i47obswe4#iy6t^frq!t4lu28@7d)+yh2kq1)b7*8ht*7'
 
-OPENAI_API_KEY = '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'
+OPENAI_API_KEY = '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'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -127,8 +127,8 @@ STATIC_URL = 'static/'
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 # Celery settings
-CELERY_BROKER_URL = 'redis://127.0.0.1:63790/0'
-CELERY_RESULT_BACKEND = 'redis://127.0.0.1:63790/0'
+CELERY_BROKER_URL = 'redis://redis:6379/0'
+CELERY_RESULT_BACKEND = 'redis://redis:6379/0'
 CELERY_ACCEPT_CONTENT = ['application/json']
 CELERY_TASK_SERIALIZER = 'json'
 CELERY_RESULT_SERIALIZER = 'json'
