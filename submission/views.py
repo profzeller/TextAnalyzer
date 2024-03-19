@@ -5,15 +5,16 @@ import textstat
 from django.db.models import Avg, Count
 from django.shortcuts import get_object_or_404
 from .tasks import fetch_openai_scores  # Assuming you have this task set up for Celery
+from django.contrib.auth.decorators import login_required
 
-
+@login_required
 def submission_detail(request, pk):
     submission = get_object_or_404(TextSubmission, pk=pk)
     return render(request, 'submission/submission_detail.html', {
         'submission': submission,
     })
 
-
+@login_required
 def submit_text(request):
     if request.method == 'POST':
         form = TextSubmissionForm(request.POST)
@@ -56,7 +57,7 @@ def submit_text(request):
 
     return render(request, 'submission/submit_text.html', {'form': form})
 
-
+@login_required
 def index(request):
     submissions = TextSubmission.objects.all()
     return render(request, 'submission/index.html', {'submissions': submissions})
