@@ -18,7 +18,7 @@ services:
 
   celery:
     build: .
-    command: celery -A djangoProject2 worker -l info
+    command: celery -A textanalyzer worker -l info
     tty: true
     volumes:
       - .:/app
