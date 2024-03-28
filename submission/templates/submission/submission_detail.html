@@ -5,6 +5,20 @@
     <h2 class="mb-3">Submission Detail: {{ submission.title }}</h2>
     <p><strong>Submitted on:</strong> {{ submission.submission_time }}</p>
 
+    <div class="accordion" id="accordionExample">
+        <div class="accordion-item">
+            <h2 class="accordion-header">
+              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                Text Submitted
+              </button>
+            </h2>
+            <div id="collapseOne" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
+              <div class="accordion-body">
+                {{ submission.submission_text }}
+              </div>
+            </div>
+          </div>
+
     <!-- Readability Scores Section -->
     <div class="card mt-3">
         <div class="card-header">
