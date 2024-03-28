@@ -8,11 +8,11 @@
     <div class="accordion" id="accordionText">
         <div class="accordion-item">
             <h2 class="accordion-header">
-              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse{{ submission.id }}" aria-expanded="true" aria-controls="collapse{{  submission.id }}">
                 Text Submitted
               </button>
             </h2>
-            <div id="collapseOne" class="accordion-collapse collapse" data-bs-parent="#accordionText">
+            <div id="collapse{{ submission.id }}" class="accordion-collapse collapse" data-bs-parent="#accordionText">
               <div class="accordion-body">
                 {{ submission.submission_text }}
               </div>
@@ -43,21 +43,21 @@
 
     <!-- Readability TestInfo Section -->
     <div class="container mt-3">
-        <h2 class="mb-3">Readability Scores</h2>
+        <h2 class="mb-3">Test Information</h2>
     </div>
 
     <div class="accordion" id="accordionTextExplain">
         {% for testinfo in testinfos %}
         <div class="accordion-item">
             <h2 class="accordion-header">
-              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse{{ testinfo.id }}" aria-expanded="true" aria-controls="collapse{{ testinfo.id }}">
                 {{ testinfo.display_name }}
               </button>
             </h2>
-            <div id="collapseOne" class="accordion-collapse collapse" data-bs-parent="#accordionTextExplain">
+            <div id="collapse{{ testinfo.id }}" class="accordion-collapse collapse" data-bs-parent="#accordionTextExplain">
               <div class="accordion-body">
-                  {{ testinfo.description }}
-                  {{ testinfo.more_info_link }}
+                  <p>{{ testinfo.description }}</p>
+                  <a href={{ testinfo.more_info_link }}>More Info </a>
               </div>
             </div>
         </div>
