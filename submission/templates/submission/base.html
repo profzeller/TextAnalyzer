@@ -25,13 +25,15 @@
                     <li class="nav-item">
                         <a class="nav-link" href="{% url 'submit_text' %}">Submit Text</a>
                     </li>
-                    {% if user.is_authenticated %}
+                </ul>
+                {% if user.is_authenticated %}
+                <ul class="navbar-nav ms-auto">
                     <li class="nav-item">
                         <a class="nav-link" href="{% url 'logout' %}">Logout</a>
                     </li>
-                    {% endif %}
-                    <!-- Add more navbar items here -->
                 </ul>
+                {% endif %}
+                    <!-- Add more navbar items here -->
             </div>
         </div>
     </nav>
