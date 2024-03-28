@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from .forms import TextSubmissionForm
 from .models import TextSubmission, ReadabilityTestInfo
 import textstat
@@ -50,7 +50,7 @@ def submit_text(request):
             fetch_openai_scores.delay(submission.id, submission.submission_text)
 
             # Redirect or show success message
-            # ...
+            redirect('/submission/{}'.format(submission.id))
 
     else:
         form = TextSubmissionForm()
