@@ -17,24 +17,29 @@
                 {{ submission.submission_text }}
               </div>
             </div>
-          </div>
+        </div>
+    </div>
 
     <!-- Readability Scores Section -->
-    <div class="card mt-3">
-        <div class="card-header">
-            Readability Scores
-        </div>
-        <ul class="list-group list-group-flush">
-            {% for key, value in submission.readability_scores.items %}
-                <li class="list-group-item">
-                    <strong>{{ key|title }}:</strong>
-                    {% for item in value %}
+    <div class="container mt-3">
+        <h2 class="mb-3">Readability Scores</h2>
+    </div>
+    
+    <div class="container text-left">
+        {% for key, value in submission.readability_scores.items %}
+            <div class="row align-items-start">
+                <div class="col">
+                  <strong>{{ key|title }}:</strong>
+                </div>
+                {% for item in value %}
+                    <div class="col">
                         {{ item.score }}
                         <span class="badge bg-secondary">{{ item.source }}</span>
-                    {% endfor %}
-                </li>
-            {% endfor %}
-        </ul>
+                    </div>
+                {% endfor %}
+              </div>
+        {% endfor %}
     </div>
+
 </div>
 {% endblock %}
