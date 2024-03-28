@@ -71,7 +71,7 @@ def fetch_openai_scores(submission_id, text):
                           },
             })
         """
-        #print(submission.readability_scores)
+        print(submission.readability_scores)
 
         # Save the updated submission
         submission.save()

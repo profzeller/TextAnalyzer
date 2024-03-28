@@ -1,4 +1,5 @@
 {% extends 'submission/base.html' %}
+{%  load static %}
 
 {% block title %}Submit Text{% endblock %}
 
@@ -16,6 +17,7 @@
         </div>
         <div class="col-12">
             <button type="submit" class="btn btn-primary">Submit</button>
+            <div id="spinner" class="spinner" style="display: none;"></div>
         </div>
     </form>
 {% endblock %}

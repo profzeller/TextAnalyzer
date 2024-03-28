@@ -20,8 +20,8 @@ from django.core.management.utils import get_random_secret_key
 
 SECRET_KEY = os.getenv("DJANGO_SECRET_KEY", get_random_secret_key())
 ALLOWED_HOSTS = os.getenv("DJANGO_ALLOWED_HOSTS", "127.0.0.1,localhost").split(",")
-DEBUG = os.getenv("DEBUG", "True") == "True"
-DEVELOPMENT_MODE = os.getenv("DEVELOPMENT_MODE", "True") == "True"
+DEBUG = os.getenv("DEBUG", "False") == "True"
+DEVELOPMENT_MODE = os.getenv("DEVELOPMENT_MODE", "False") == "True"
 OPENAI_API_KEY = os.getenv("OPENAI_API_KEY", '')
 
 
@@ -141,6 +141,7 @@ USE_TZ = True
 
 STATIC_URL = 'static/'
 STATIC_ROOT = 'static/'
+
 
 MEDIA_URL = 'media/'
 MEDIA_ROOT = 'media/'
