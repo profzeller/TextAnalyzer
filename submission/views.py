@@ -7,12 +7,15 @@ from django.shortcuts import get_object_or_404
 from .tasks import fetch_openai_scores  # Assuming you have this task set up for Celery
 from django.contrib.auth.decorators import login_required
 
+
 @login_required
 def submission_detail(request, pk):
     submission = get_object_or_404(TextSubmission, pk=pk)
+    testinfos = ReadabilityTestInfo.objects.all()
     return render(request, 'submission/submission_detail.html', {
-        'submission': submission,
+        'submission': submission, 'testinfos': testinfos,
     })
+
 
 @login_required
 def submit_text(request):
