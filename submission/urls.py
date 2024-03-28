@@ -8,5 +8,6 @@ urlpatterns = [
     path('logout/', auth_views.LogoutView.as_view(), name='logout'),
     path('submit/', views.submit_text, name='submit_text'),  # URL for submitting text
     path('submission/<int:pk>/', views.submission_detail, name='submission_detail'),
+    path('submission/<int:pk>/delete/', views.delete_submission, name='delete_submission'),
     # ... you can add more URL patterns here if needed ...
 ]

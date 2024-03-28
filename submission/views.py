@@ -18,6 +18,17 @@ def submission_detail(request, pk):
 
 
 @login_required
+def delete_submission(request, pk):
+    submission = get_object_or_404(TextSubmission, pk=pk)
+    if request.method == 'POST':
+        submission.delete()
+        return redirect('index')  # Assuming 'index' is the name of your URL pattern for the submission list page.
+    else:
+        # Redirect to detail view if not a POST request, as a fallback.
+        return redirect('submission_detail', pk=pk)
+
+
+@login_required
 def submit_text(request):
     if request.method == 'POST':
         form = TextSubmissionForm(request.POST)
@@ -59,6 +70,7 @@ def submit_text(request):
         form = TextSubmissionForm()
 
     return render(request, 'submission/submit_text.html', {'form': form})
+
 
 @login_required
 def index(request):
