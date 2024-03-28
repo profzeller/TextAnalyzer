@@ -8,11 +8,11 @@
     <div class="accordion" id="accordionText">
         <div class="accordion-item">
             <h2 class="accordion-header">
-              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse{{ submission.id }}" aria-expanded="true" aria-controls="collapse{{  submission.id }}">
+              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapsesub{{ submission.id }}" aria-expanded="true" aria-controls="collapsesub{{  submission.id }}">
                 Text Submitted
               </button>
             </h2>
-            <div id="collapse{{ submission.id }}" class="accordion-collapse collapse" data-bs-parent="#accordionText">
+            <div id="collapsesub{{ submission.id }}" class="accordion-collapse collapse" data-bs-parent="#accordionText">
               <div class="accordion-body">
                 {{ submission.submission_text }}
               </div>
@@ -41,6 +41,8 @@
         {% endfor %}
     </div>
 
+    <br>
+    <br>
     <!-- Readability TestInfo Section -->
     <div class="container mt-3">
         <h2 class="mb-3">Test Information</h2>
@@ -50,11 +52,11 @@
         {% for testinfo in testinfos %}
         <div class="accordion-item">
             <h2 class="accordion-header">
-              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse{{ testinfo.id }}" aria-expanded="true" aria-controls="collapse{{ testinfo.id }}">
+              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapsetest{{ testinfo.id }}" aria-expanded="true" aria-controls="collapsetest{{ testinfo.id }}">
                 {{ testinfo.display_name }}
               </button>
             </h2>
-            <div id="collapse{{ testinfo.id }}" class="accordion-collapse collapse" data-bs-parent="#accordionTextExplain">
+            <div id="collapsetest{{ testinfo.id }}" class="accordion-collapse collapse" data-bs-parent="#accordionTextExplain">
               <div class="accordion-body">
                   <p>{{ testinfo.description }}</p>
                   <a href={{ testinfo.more_info_link }}>More Info </a>
