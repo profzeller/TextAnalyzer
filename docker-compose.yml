@@ -27,15 +27,13 @@ services:
       - redis
 
   nginx:
-    image: nginx:alpine
     build:
-      context: ./nginx  # The directory containing your Dockerfile and nginx.conf
+      context: ./nginx  # Ensure this path is correct and points to the directory with your Dockerfile and nginx.conf
     ports:
       - "80:80"
     volumes:
-      - ./nginx.conf:/etc/nginx/nginx.conf:ro
-      - static_volume:/app/static
-      - media_volume:/app/media
+      - static_volume:/app/static  # Assuming your static files are collected here
+      - media_volume:/app/media    # Assuming your media files are stored here
     depends_on:
       - django
 
