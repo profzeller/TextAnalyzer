@@ -28,6 +28,8 @@ services:
 
   nginx:
     image: nginx:alpine
+    build:
+      context: ./nginx  # The directory containing your Dockerfile and nginx.conf
     ports:
       - "80:80"
     volumes:
